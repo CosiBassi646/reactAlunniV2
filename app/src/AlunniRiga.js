@@ -8,7 +8,7 @@ export default function AlunniRiga(props) {
         caricaAlunni();
     }
     return (
-        <tr>
+        <tr> 
             <td>{a.id}</td>
             <td>{a.nome}</td>
             <td>{a.cognome}</td>

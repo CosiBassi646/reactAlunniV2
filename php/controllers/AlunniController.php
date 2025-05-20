@@ -55,4 +55,14 @@ class AlunniController
     $response->getBody()->write(json_encode($result));
     return $response->withHeader("Content-type", "application/json")->withStatus(200);
   }
+
+  public function add(Request $request, Response $response, $args){
+    $body= json_decode($request->getBody()->getContents(), true);
+    $nome = $body["nome"];
+    $cognome = $body["cognome"];
+    $mysqli_connection = new MySQLi('my_mariadb', 'root', 'ciccio', 'scuola');
+    $result = $mysqli_connection->query("INSERT INTO `alunni`(`nome`, `cognome`) VALUES ('$nome','$cognome')");
+
+    return $response->withHeader("Content-Type", "application/json")->withStatus(201);  
+  }
 }
