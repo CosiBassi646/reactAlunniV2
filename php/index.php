@@ -12,6 +12,7 @@ $app->get('/alunni', "AlunniController:index");
 $app->get('/search/alunni/{key:\w{3,}}', "AlunniController:search");
 $app->get('/sort/alunni/{col:\w{3,}}', "AlunniController:sort");
 $app->post('/alunni', "AlunniController:add");
+$app->put('/alunni/{id:\d+}', "AlunniController:edit");
 $app->get('/alunni/{id:\d+}/cert', "CertificazioniController:index");
 $app->get('/alunni/{id:\d+}/cert/{id_cert:\d+}', "CertificazioniController:search");
 $app->post('/alunni/{id:\d+}/cert', "CertificazioniController:add");

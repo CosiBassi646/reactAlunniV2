@@ -65,4 +65,16 @@ class AlunniController
 
     return $response->withHeader("Content-Type", "application/json")->withStatus(201);  
   }
+
+  public function edit(Request $request, Response $response, $args){ //modifica i parametri di un'alunno dato l'id
+    $body= json_decode($request->getBody()->getContents(), true);
+    $response->getBody()->write($args["id"]);
+    $nome = $body["nome"];
+    $cognome = $body["cognome"];
+    $mysqli_connection = new MySQLi('my_mariadb', 'root', 'ciccio', 'scuola');
+    $result = $mysqli_connection->query("UPDATE `alunni` SET `nome`='$nome',`cognome`='$cognome' WHERE alunni.id = $args[id]");
+
+    return $response->withHeader("Content-Type", "application/json")->withStatus(200);
+  }
+
 }
